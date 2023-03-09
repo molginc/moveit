@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   pluginlib
   tf2
   dynamic_reconfigure
+  moveit_msgs
 )
 moveit_build_options()
 
@@ -26,6 +27,7 @@ catkin_package(
     dynamic_reconfigure
     moveit_core
     roscpp
+    moveit_msgs
   DEPENDS
     OMPL
 )
