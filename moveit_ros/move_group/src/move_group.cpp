@@ -103,9 +103,11 @@ public:
           printf(MOVEIT_CONSOLE_COLOR_BLUE "\nmove_group is running but no capabilities are "
                                            "loaded.\n\n" MOVEIT_CONSOLE_COLOR_RESET);
         else
+        {
           printf(MOVEIT_CONSOLE_COLOR_GREEN "\nYou can start planning now!\n\n" MOVEIT_CONSOLE_COLOR_RESET);
           // Set the new initialized parameter:
           node_handle_.setParam("initialized", true);
+        }
         fflush(stdout);
       }
     }
