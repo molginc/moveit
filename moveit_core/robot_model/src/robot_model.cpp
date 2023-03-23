@@ -1029,7 +1029,7 @@ LinkModel* RobotModel::constructLinkModel(const urdf::Link* urdf_link)
   }
   if (warn_about_missing_collision)
   {
-    ROS_WARN_STREAM_NAMED(LOGNAME + ".empty_collision_geometry",
+    ROS_INFO_STREAM_NAMED(LOGNAME + ".empty_collision_geometry",
                           "Link " << urdf_link->name
                                   << " has visual geometry but no collision geometry. "
                                      "Collision geometry will be left empty. "
