@@ -112,9 +112,9 @@ class PlanningSceneInterface(object):
         co = self.__make_cone(name, pose, height, radius)
         self.__submit(co, attach=False)
 
-    def add_mesh(self, name, pose, filename, file_type=None, size=(1, 1, 1)):
+    def add_mesh(self, name, pose, filename, size=(1, 1, 1), file_type=None,):
         """Add a mesh to the planning scene"""
-        co = self.__make_mesh(name, pose, filename, file_type, size)
+        co = self.__make_mesh(name, pose, filename, size, file_type)
         self.__submit(co, attach=False)
 
     def add_box(self, name, pose, size=(1, 1, 1)):
@@ -287,7 +287,7 @@ class PlanningSceneInterface(object):
         )
 
     @staticmethod
-    def __make_mesh(name, pose, filename, file_type=None, scale=(1, 1, 1)):
+    def __make_mesh(name, pose, filename, scale=(1, 1, 1), file_type=None):
         co = CollisionObject()
         if pyassimp is False:
             raise MoveItCommanderException(
