@@ -112,9 +112,9 @@ class PlanningSceneInterface(object):
         co = self.__make_cone(name, pose, height, radius)
         self.__submit(co, attach=False)
 
-    def add_mesh(self, name, pose, filename, size=(1, 1, 1)):
+    def add_mesh(self, name, pose, filename, file_type=None, size=(1, 1, 1)):
         """Add a mesh to the planning scene"""
-        co = self.__make_mesh(name, pose, filename, size)
+        co = self.__make_mesh(name, pose, filename, file_type, size)
         self.__submit(co, attach=False)
 
     def add_box(self, name, pose, size=(1, 1, 1)):
@@ -287,13 +287,13 @@ class PlanningSceneInterface(object):
         )
 
     @staticmethod
-    def __make_mesh(name, pose, filename, scale=(1, 1, 1)):
+    def __make_mesh(name, pose, filename, file_type=None, scale=(1, 1, 1)):
         co = CollisionObject()
         if pyassimp is False:
             raise MoveItCommanderException(
                 "Pyassimp needs patch https://launchpadlibrarian.net/319496602/patchPyassim.txt"
             )
-        scene = pyassimp.load(filename)
+        scene = pyassimp.load(filename, file_type=file_type)
         if not scene.meshes or len(scene.meshes) == 0:
             raise MoveItCommanderException("There are no meshes in the file")
         if len(scene.meshes[0].faces) == 0:
